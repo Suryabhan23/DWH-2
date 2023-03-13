@@ -1,0 +1,87 @@
+Scenario I: Student Enrollment in Stanford Courses
+
+ANS1==
+
+Option A: Modifying the Instructor dimension by adding special rows representing instructor teams. 
+Strengths include that it adheres to the intended grain, provides full instructor details, and requires only one fact table.
+ Weaknesses include that it can be more complicated to implement, and it may not be scalable if there are too many instructor teams.
+
+Option B: Changing the grain of the fact table to be one row per student enrollment per course per instructor. 
+Strengths include that it adheres to the intended grain, and it allows for better tracking of enrollment per instructor.
+ Weaknesses include that it can be more complicated to implement, and it may require more storage space.
+
+Option C: Creating two fact tables. 
+Strengths include that it allows for separate tables for different purposes, and it provides full instructor details. 
+Weaknesses include that it can be more complicated to implement, and it may require more storage space.
+
+ANS 2==
+
+The choice of options will depend on the specific requirements and priorities of the organization. However, if storage space is not a concern,
+ Option C may be a good choice because it allows for separate tables for different purposes, and it provides full instructor details.
+ If storage space is a concern, Option A may be a better choice as it requires only one fact table.
+
+ANS 3==
+
+If the majority of classes had multiple instructors, Option B may be a better choice as it allows for better tracking of enrollment per instructor.
+ If only one or two classes had multiple instructors, Option A may still be a viable option.
+
+ANS 4:==
+Another alternative design is to have a hybrid fact table that includes both the original fact table and a modified fact table that includes the Instructor dimension.
+ This approach allows for both tables to be used for different purposes, and it reduces the complexity of having two separate fact tables. However, it may require more storage space and can still be complicated to implement.
+
+
+
+
+
+Scenario II: Online Brokerage Company
+
+ANS1==
+
+Option A: The scores are attributes of the Customer dimension. When scores change, the old score is overwritten with the new score (Type 1 Slowly Changing Dimension).
+ Strengths include that it is simple to implement, and it requires less storage space.
+ Weaknesses include that it does not allow for historical tracking of scores, and it may not provide enough information for users interested in understanding how and why customer scores change.
+
+Option B: The scores are attributes of the Customer dimension. When scores change, new Customer dimension rows are created using the updated scores (Type 2 Slowly Changing Dimension). 
+Strengths include that it allows for historical tracking of scores, and it provides more information for users interested in understanding how and why customer scores change. 
+Weaknesses include that it requires more storage space, and it can be more complicated to implement.
+
+Option C: The scores are stored in a separate CustomerScores dimension.
+ Strengths include that it allows for separate tables for different purposes, and it can simplify queries that involve customer scores.
+ Weaknesses include that it requires more storage space, and it may not provide enough information for users interested in understanding how and why customer scores change.
+
+Option D: The scores are stored in a CustomerScores outrigger table.
+ Strengths include that it allows for separate
+
+
+Answer 5:
+
+Option A: The strengths of Option A include its simplicity and ease of implementation.
+ Its weakness is that it does not take into account the recency of a customer's interaction, which could lead to inaccurate predictions.
+
+Option B: The strengths of Option B include its ability to consider the recency of a customer's interaction, which should improve prediction accuracy. 
+Its weakness is that it may be more complex to implement compared to Option A.
+
+Option C: The strengths of Option C include its ability to consider the recency of a customer's interaction and to assign different weights to different types of interactions. 
+Its weakness is that it may be even more complex to implement compared to Option B.
+
+Option D: The strengths of Option D include its ability to consider both the recency and frequency of a customer's interaction, which should improve prediction accuracy even further. 
+Its weakness is that it may be the most complex option to implement and may require more computational resources compared to the other options.
+
+Answer  6:
+
+Based on the strengths and weaknesses of each option, I would choose Option B.
+ It strikes a good balance between simplicity and accuracy, and its ability to consider the recency of a customer's interaction should improve prediction accuracy compared to Option A.
+ Furthermore, it is still relatively easy to implement compared to Options C and D.
+
+Answer  7:
+
+If the number of customers OR the time interval between score recalculations was much larger, then Options C and D may become more attractive. 
+With a larger customer base, the added complexity of these options may be justified by the potential increase in accuracy.
+ Similarly, with a longer time interval between score recalculations, the recency of a customer's interaction becomes less important, which may make Option A less effective.
+active. With a smaller customer base, the added complexity of Options B, C, and D may not be necessary, and the simplicity of Option A may be sufficient.
+
+Answer 8:
+
+Another reasonable alternative design could be to use a combination of Options B and D.
+ This design would take into account both the recency and frequency of a customer's interaction, which should improve prediction accuracy even further compared to Option B alone.
+ However, it may be more complex to implement compared to Option B, and may require more computational resources compared to Option D.
